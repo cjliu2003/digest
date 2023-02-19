@@ -112,7 +112,7 @@ const Create = () => {
             formData.append("num_outputs", currLength);
             formData.append("grade_level", currGrade);
             formData.append("timeout", 300);
-            const response = await fetch("http://a955-171-66-12-87.ngrok.io", {
+            const response = await fetch("http://436c-171-66-12-87.ngrok.io", {
                 method: "POST",
                 body: formData,
             })
