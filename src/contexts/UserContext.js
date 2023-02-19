@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect} from "react";
-import { auth, firestore } from "../firebase";
+import { auth, firestore, storage } from "../firebase";
 import { 
   createUserWithEmailAndPassword, 
   onAuthStateChanged, 
@@ -7,6 +7,7 @@ import {
   signOut, 
 } from "@firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import { uploadBytes, ref } from "firebase/storage";
 
 const UserContext = createContext({});
 
@@ -66,8 +67,21 @@ export const UserContextProvider = ({ children }) => {
         .finally(() => setLoading(false));
     }
 
+    const uploadFile = (file, id) => {
+        const storageRef = ref(storage, id);
+        uploadBytes(storageRef, file).then((snapshot) => {
+            console.log('Uploaded a blob or file!');
+        });
+    }
+
     const addSet = (set) => {
         const userDocRef = doc(firestore, "customers", user.uid);
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        const yyyy = today.getFullYear();
+        const date = mm + '/' + dd + '/' + yyyy;
+        set.date = date.toString();
         // find current sets
         getDoc(userDocRef).then((doc) => {
             // add new set to current sets
@@ -108,7 +122,8 @@ export const UserContextProvider = ({ children }) => {
         signInUserEmail,
         logoutUser,
         initializeUserData,
-        featuredSet, setFeaturedSet
+        featuredSet, setFeaturedSet,
+        uploadFile
     };
     
     return (

@@ -20,6 +20,7 @@ const Home = () => {
   }, [user])
   
   const handleNavigate = (type, data) => {
+    console.log(data)
     setFeaturedSet(data)
     switch (type) {
       case "flashcards":
@@ -51,6 +52,7 @@ const Home = () => {
               <div className="digest__home__your-sets__set-container flex__col ac jc" key={index} onClick={() => handleNavigate(set.type, set)}>
                 <h2 className="digest__home__your-sets__set-container-title">{set.title}</h2>
                 <p className="digest__home__your-sets__set-container-subtitle">{set.type}</p>
+                <h3 className="digest__home__your-sets__set-container-date">Created: {set.date}</h3>
               </div>
             )
           })}

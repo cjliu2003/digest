@@ -3,10 +3,10 @@ import './gradedtfqcard.css'
 
 const GradedTFQCard = ({question, correct, idx, total, answer}) => {
     const isCorrect = (answer) => {
-        if ((answer && correct) || (!answer && !correct)) {
-            return true
+        if (answer === correct ) {
+          return true
         } else {
-            return false
+          return false
         }
     }
     const choices = ["True", "False"]
@@ -40,7 +40,7 @@ const GradedTFQCard = ({question, correct, idx, total, answer}) => {
                 : answer === choice && !isCorrect(answer) 
                 ? "gmcq__card__choices__container__choice gmcq__card__choices__container__choice-incorrect" 
                 : "gmcq__card__choices__container__choice"
-                }>{choice ? "True" : "False"}
+                }>{choice}
             </div>
                 )
             })}

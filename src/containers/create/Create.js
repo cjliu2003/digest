@@ -38,7 +38,7 @@ const Create = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [link, setLink] = useState("");
-    const {addSet, setFeaturedSet, userSets, user} = useUserContext()
+    const {uploadFile, addSet, setFeaturedSet} = useUserContext()
 
     const onDrop = (acceptedFiles) => {
         const file = acceptedFiles[0]
@@ -106,56 +106,77 @@ const Create = () => {
             alert("Please select a length");
         } else {
             setLoading(true)
-            const thomasData = {
-                path: selectedFile.path,
-                type: parseOutputType(currOutput),
-                length: currLength,
-                grade: currGrade,
-            }
-            console.log(thomasData)
+            const formData = new FormData();
+            formData.append("filedata", selectedFile);
+            formData.append("filename", selectedFile.path);
+            formData.append("output_type", parseOutputType(currOutput));
+            formData.append("num_outputs", currLength);
+            formData.append("grade_level", currGrade);
+            formData.append("timeout", 300);
+            const response = await fetch("http://a955-171-66-12-87.ngrok.io", {
+                method: "POST",
+                body: formData,
+            })
+            console.log(response)
+            const responseData = await response.json();
+            console.log(responseData);
             // note that the set object will not have all of these fields, this is just for testing. 
             const set = {
                 id: generateUniqueId(),
-                title: title, 
-                type: currOutput, 
-                link: link,
-                cards: [{term: "lebron james", def: "basketball player for the cleveland cavs"}, {term: "stephen curry", def: "basketball player for the golden state warriors"}, {term: "kobe bryant", def: "basketball player for the los angeles lakers"}, {term: "michael jordan", def: "basketball player for the chicago bulls"}, {term: "kevin durant", def: "basketball player for the golden state warriors"}], 
-                paragraphs: [
-                    "One of the benefits of being short is that you may have a lower risk of certain health conditions. For example, studies suggest that shorter individuals may be less likely to develop heart disease, type 2 diabetes, and some forms of cancer. This may be because shorter people tend to have lower levels of certain hormones and less strain on their organs.",
-                    "Another potential benefit of being short is that you may have an easier time fitting into small spaces or finding clothing that fits. If you're someone who loves to travel or explore tight spaces, being shorter may be advantageous. Additionally, children who are shorter may have an easier time finding clothes and shoes that fit them, which can save parents time and money.",
-                    "Shorter people may also have an advantage in certain sports, such as gymnastics, diving, or rock climbing. These sports require a lower center of gravity, which can be an advantage for shorter individuals. In addition, shorter people may be able to move more quickly and easily through tight spaces or over obstacles, which can be beneficial in many sports and activities.",
-                    "Being short can also be an advantage in certain professions. For example, if you're a pilot or astronaut, being shorter may be an advantage because it can make it easier to fit into tight spaces or maneuver equipment. Additionally, shorter people may have an easier time finding jobs that require them to crawl or work in small spaces, such as plumbers, electricians, or mechanics.",
-                    "Finally, being short may be beneficial for your lifespan. Some studies suggest that shorter people may have a longer lifespan than taller people. This may be because shorter individuals tend to have lower levels of insulin-like growth factor 1 (IGF-1), which has been linked to a higher risk of cancer and other health conditions. While height is just one factor that affects your overall health and lifespan, being short may be one small advantage."
-                ],
-                mcquestions: [
-                    {question: "What is the capital of California?", A: "Sacramento", B: "San Francisco", C: "Los Angeles", D: "San Diego", correct: "A"},
-                    {question: "What is the capital of New York?", A: "New York City", B: "Albany", C: "Buffalo", D: "Rochester", correct: "B"},
-                    {question: "What is the capital of Texas?", A: "Houston", B: "Dallas", C: "Austin", D: "San Antonio", correct: "C"},
-                    {question: "What is the capital of Florida?", A: "Miami", B: "Tampa", C: "Orlando", D: "Tallahassee", correct: "D"},
-                    {question: "What is the capital of Illinois?", A: "Chicago", B: "Springfield", C: "Peoria", D: "Rockford", correct: "B"}
-                ],
-                tfquestions: [
-                    {question: "Is Thomas' mom hot?", correct: true},
-                    {question: "Is Thomas' dad hot?", correct: true},
-                    {question: "Is Thomas' sister hot?", correct: true},
-                    {question: "Is Thomas' brother hot?", correct: false},
-                    {question: "Is Thomas' dog hot?", correct: true},
-                ],
-                bps: [
-                    "One of the benefits of being short is that you may have a lower risk of certain health conditions. For example, studies suggest that shorter individuals may be less likely to develop heart disease, type 2 diabetes, and some forms of cancer. This may be because shorter people tend to have lower levels of certain hormones and less strain on their organs.",
-                    "Another potential benefit of being short is that you may have an easier time fitting into small spaces or finding clothing that fits. If you're someone who loves to travel or explore tight spaces, being shorter may be advantageous. Additionally, children who are shorter may have an easier time finding clothes and shoes that fit them, which can save parents time and money.",
-                    "Shorter people may also have an advantage in certain sports, such as gymnastics, diving, or rock climbing. These sports require a lower center of gravity, which can be an advantage for shorter individuals. In addition, shorter people may be able to move more quickly and easily through tight spaces or over obstacles, which can be beneficial in many sports and activities.",
-                    "Being short can also be an advantage in certain professions. For example, if you're a pilot or astronaut, being shorter may be an advantage because it can make it easier to fit into tight spaces or maneuver equipment. Additionally, shorter people may have an easier time finding jobs that require them to crawl or work in small spaces, such as plumbers, electricians, or mechanics.",
-                    "Finally, being short may be beneficial for your lifespan. Some studies suggest that shorter people may have a longer lifespan than taller people. This may be because shorter individuals tend to have lower levels of insulin-like growth factor 1 (IGF-1), which has been linked to a higher risk of cancer and other health conditions. While height is just one factor that affects your overall health and lifespan, being short may be one small advantage."
-                ],
+                title: title,
+                type: currOutput,
             }
+            if (currOutput === "flashcards") {
+                set.cards = responseData.Data;
+            } else if (currOutput === "summary") {
+                set.paragraphs = responseData.Data.paragraphs;
+                set.overview = responseData.Data.overview;
+            } else if (currOutput === "bullet points") {
+                set.bps = responseData.Data.bps;
+            } else if (currOutput === "true/false quiz") {
+                set.tfquestions = responseData.Data;
+            } else {
+                set.mcquestions = responseData.Data;
+            }
+            // const set = {
+            //     id: generateUniqueId(),
+            //     title: title, 
+            //     type: currOutput, 
+            //     link: link,
+            //     cards: [{term: "lebron james", def: "basketball player for the cleveland cavs"}, {term: "stephen curry", def: "basketball player for the golden state warriors"}, {term: "kobe bryant", def: "basketball player for the los angeles lakers"}, {term: "michael jordan", def: "basketball player for the chicago bulls"}, {term: "kevin durant", def: "basketball player for the golden state warriors"}], 
+            //     paragraphs: [
+            //         "One of the benefits of being short is that you may have a lower risk of certain health conditions. For example, studies suggest that shorter individuals may be less likely to develop heart disease, type 2 diabetes, and some forms of cancer. This may be because shorter people tend to have lower levels of certain hormones and less strain on their organs.",
+            //         "Another potential benefit of being short is that you may have an easier time fitting into small spaces or finding clothing that fits. If you're someone who loves to travel or explore tight spaces, being shorter may be advantageous. Additionally, children who are shorter may have an easier time finding clothes and shoes that fit them, which can save parents time and money.",
+            //         "Shorter people may also have an advantage in certain sports, such as gymnastics, diving, or rock climbing. These sports require a lower center of gravity, which can be an advantage for shorter individuals. In addition, shorter people may be able to move more quickly and easily through tight spaces or over obstacles, which can be beneficial in many sports and activities.",
+            //         "Being short can also be an advantage in certain professions. For example, if you're a pilot or astronaut, being shorter may be an advantage because it can make it easier to fit into tight spaces or maneuver equipment. Additionally, shorter people may have an easier time finding jobs that require them to crawl or work in small spaces, such as plumbers, electricians, or mechanics.",
+            //         "Finally, being short may be beneficial for your lifespan. Some studies suggest that shorter people may have a longer lifespan than taller people. This may be because shorter individuals tend to have lower levels of insulin-like growth factor 1 (IGF-1), which has been linked to a higher risk of cancer and other health conditions. While height is just one factor that affects your overall health and lifespan, being short may be one small advantage."
+            //     ],
+            //     mcquestions: [
+            //         {question: "What is the capital of California?", A: "Sacramento", B: "San Francisco", C: "Los Angeles", D: "San Diego", correct: "A"},
+            //         {question: "What is the capital of New York?", A: "New York City", B: "Albany", C: "Buffalo", D: "Rochester", correct: "B"},
+            //         {question: "What is the capital of Texas?", A: "Houston", B: "Dallas", C: "Austin", D: "San Antonio", correct: "C"},
+            //         {question: "What is the capital of Florida?", A: "Miami", B: "Tampa", C: "Orlando", D: "Tallahassee", correct: "D"},
+            //         {question: "What is the capital of Illinois?", A: "Chicago", B: "Springfield", C: "Peoria", D: "Rockford", correct: "B"}
+            //     ],
+            //     tfquestions: [
+            //         {question: "Is Thomas' mom hot?", correct: true},
+            //         {question: "Is Thomas' dad hot?", correct: true},
+            //         {question: "Is Thomas' sister hot?", correct: true},
+            //         {question: "Is Thomas' brother hot?", correct: false},
+            //         {question: "Is Thomas' dog hot?", correct: true},
+            //     ],
+            //     bps: [
+            //         "One of the benefits of being short is that you may have a lower risk of certain health conditions. For example, studies suggest that shorter individuals may be less likely to develop heart disease, type 2 diabetes, and some forms of cancer. This may be because shorter people tend to have lower levels of certain hormones and less strain on their organs.",
+            //         "Another potential benefit of being short is that you may have an easier time fitting into small spaces or finding clothing that fits. If you're someone who loves to travel or explore tight spaces, being shorter may be advantageous. Additionally, children who are shorter may have an easier time finding clothes and shoes that fit them, which can save parents time and money.",
+            //         "Shorter people may also have an advantage in certain sports, such as gymnastics, diving, or rock climbing. These sports require a lower center of gravity, which can be an advantage for shorter individuals. In addition, shorter people may be able to move more quickly and easily through tight spaces or over obstacles, which can be beneficial in many sports and activities.",
+            //         "Being short can also be an advantage in certain professions. For example, if you're a pilot or astronaut, being shorter may be an advantage because it can make it easier to fit into tight spaces or maneuver equipment. Additionally, shorter people may have an easier time finding jobs that require them to crawl or work in small spaces, such as plumbers, electricians, or mechanics.",
+            //         "Finally, being short may be beneficial for your lifespan. Some studies suggest that shorter people may have a longer lifespan than taller people. This may be because shorter individuals tend to have lower levels of insulin-like growth factor 1 (IGF-1), which has been linked to a higher risk of cancer and other health conditions. While height is just one factor that affects your overall health and lifespan, being short may be one small advantage."
+            //     ],
+            // }
             await addSet(set)
-            setTimeout(() => {
-                // this will change later
-                setFeaturedSet(set)
-                handleNavigation(currOutput)
-                setLoading(false)
-            }, 3000);
+            setFeaturedSet(set)
+            handleNavigation(currOutput)
+            setLoading(false)
         }
     }
     const navigate = useNavigate()

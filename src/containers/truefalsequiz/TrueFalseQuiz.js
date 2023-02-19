@@ -45,7 +45,7 @@ const TrueFalseQuiz = () => {
     const calculateScore = () => {
         let score = 0
         for (let i = 0; i < answers.length; i++) {
-            if (answers[i] === quiz[i].correct) {
+            if (answers[i] === quiz[i].answer) {
                 score++
             }
         }
@@ -82,7 +82,7 @@ const TrueFalseQuiz = () => {
                     {!quizGraded ? 
                     <TFQCard 
                         question={q.question}
-                        correct={q.correct}
+                        correct={q.answer}
                         idx={idx}
                         total={quiz.length}
                         setAnswer={setAnswer}
@@ -90,7 +90,7 @@ const TrueFalseQuiz = () => {
                     />
                     : <GradedTFQCard 
                         question={q.question}
-                        correct={q.correct}
+                        correct={q.answer}
                         idx={idx}
                         total={quiz.length}
                         answer={answers[idx]}

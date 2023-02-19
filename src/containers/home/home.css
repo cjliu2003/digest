@@ -22,12 +22,21 @@
     color: black;
     margin-bottom: 0.5rem;
     text-align: center;
+    text-transform: capitalize;
 }
 
 .digest__home__your-sets__set-container-subtitle {
-    font-size: 1rem;
-    font-weight: 300;
+    font-size: 1.25rem;
+    font-weight: 500;
     color: #00000080;
     text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.digest__home__your-sets__set-container-date {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #000000;
     text-align: center;
 }

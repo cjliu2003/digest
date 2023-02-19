@@ -12,6 +12,7 @@ const Summary = () => {
     // ]
     const {featuredSet} = useUserContext()
     const [title, setTitle] = useState(featuredSet ? featuredSet.title : "")
+    const [overview, setOverview] = useState(featuredSet ? featuredSet.overview : "")
     const [paragraphs, setParagraphs] = useState(featuredSet ? featuredSet.paragraphs : [])
     useEffect(() => {
       if (featuredSet) {
@@ -33,7 +34,7 @@ const Summary = () => {
         </div>
         <div className="digest__summary__highlevel__container"> 
             <p className="digest__summary__highlevel">What you need to know:</p>
-            <p className="digest__summary__onesentence">This is a one sentence summary of the text above.</p>
+            <p className="digest__summary__onesentence">{overview}</p>
         </div>
         <div className="digest__summary__paragraphs">
             <p className="digest__summary__highlevel">Full summary:</p>

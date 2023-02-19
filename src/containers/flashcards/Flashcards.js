@@ -105,7 +105,7 @@ const Flashcards = () => {
         <div className="flashcards__card__content flex__col ac jc" onClick={handleFlip}>
             {/* <button onClick={handleStar}>{starred ? <AiFillStar size="30"/> : <AiOutlineStar size="30"/>}</button> */}
           <div className="flashcards__card__term">
-            {showTermFirst ? <h2>{flashcards[currentIndex][termShowing ? "term" : "def"]}</h2> : <h2>{flashcards[currentIndex][termShowing ? "term" : "def"]}</h2>}
+            {showTermFirst ? <h2>{flashcards[currentIndex][termShowing ? "term" : "definition"]}</h2> : <h2>{flashcards[currentIndex][termShowing ? "term" : "definition"]}</h2>}
           </div>
           <p>{termShowing ? "(Term)" : "(Definition)"}</p>
         </div>
