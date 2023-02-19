@@ -36,7 +36,6 @@ const GradedMCQCard = ({question, A, B, C, D, correct, idx, total, answers}) => 
         </div>
         <div className="gmcq__card__choices">
           <div className="gmcq__card__choices__container">
-            {/* if the answer is A and it is correct, then add the class gmcq__card__choices__container__choice-correct, if it's not correct but it's A, then add the class gmcq__card__choices__container-incorrect, else make it the default class */}
             {choices.map((choice) => {
                 return (
                     <div className={answers[idx] === choice && isCorrect(answers[idx]) 
