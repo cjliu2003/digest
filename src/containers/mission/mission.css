@@ -1,0 +1,24 @@
+.digest__mission__header {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.digest__mission p {
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+}
+
+.digest__mission {
+    transform: skewY(4deg);
+}
+
+.digest__mission__bg {
+    background: var(--primary-color);
+    transform: skewY(-4deg);
+}

@@ -1,25 +1,92 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import  {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { About, Create, Flashcards, Mission, Faq, Footer, Hero, Home, Navbar, MultipleChoiceQuiz, SignIn, SignUp, Summary, TrueFalseQuiz, BPSummary } from './containers'
+import { UserContextProvider } from './contexts/UserContext'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <UserContextProvider>
+        <Router>
+            <Routes>
+                <Route path="/" element={
+                    <div>
+                        <Navbar />
+                        <Hero />
+                        <Mission />
+                        <About />
+                        <Faq />
+                        <Footer/>
+                    </div>
+                }/>
+                <Route path="/signin" element={
+                    <div>
+                        <SignIn/>
+                    </div>
+                }/>
+                <Route path="/about" element={
+                    <div>
+                        <Navbar />
+                        <About/>
+                        <Footer/>
+                    </div>
+                }/>
+                <Route path="/signup" element={
+                    <div>
+                        <SignUp/>
+                        
+                    </div>
+                }/>
+                <Route path="/home" element={
+                    <div>
+                        <Navbar />
+                        <Home/>
+                        <Footer/>
+                    </div>
+                }/>
+                <Route path="/create" element={
+                    <div>
+                        <Navbar />
+                        <Create />
+                        <Footer/>
+                    </div>
+                }/>
+                <Route path="/summary" element={
+                    <div>
+                        <Navbar />
+                        <Summary />
+                        <Footer/>
+                    </div>
+                }/>
+                <Route path="/bp-summary" element={
+                    <div>
+                        <Navbar />
+                        <BPSummary />
+                        <Footer/>
+                    </div>
+                }/>
+                <Route path="/flashcards" element={
+                    <div>
+                        <Flashcards />
+                    </div>
+                }/>
+                <Route path="/multiplechoicequiz" element={
+                    <div>
+                        <MultipleChoiceQuiz />
+                        <Footer/>
+                    </div>
+                }/>
+                <Route path="/truefalsequiz" element={
+                    <div>
+                        <TrueFalseQuiz />
+                        <Footer/>
+                    </div>
+                }/>
+                
+            </Routes>
+        </Router>
+    </UserContextProvider>
+  )
 }
 
-export default App;
+export default App

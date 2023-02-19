@@ -1,0 +1,105 @@
+.digest__navbar {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.digest__navbar__logo h1 {
+    cursor: pointer;
+}
+
+.digest__navbar__sign h1,
+.digest__navbar__create-btn {
+    font-size: 1.25rem;
+    margin-right: 1rem;
+}
+
+.digest__navbar__create-btn h1:hover {
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.digest__navbar__sign h1 {
+    color: white;
+}
+
+.digest__navbar__create-btn h1 {
+    color: black;
+    transition: 150ms ease-in-out;
+}
+
+.digest__navbar__logo {
+    margin: 1rem;
+}
+
+.digest__navbar__sign {
+    margin: 1rem;
+    
+}
+
+.digest__navbar__sign a {
+    padding: 0.75rem 3rem;
+    font-size: 1.25rem;
+    color: white;
+    background: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.digest__navbar__icon {
+    text-transform: capitalize;
+    background-color: var(--primary-color);
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    margin: 1rem;
+}
+
+.digest__navbar__logo img {
+    width: 250px;
+    height: auto;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+.digest__navbar__create-btn {
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.digest__navbar__user-menu {
+    position: absolute;
+    top: 90px;
+    right: 25px;
+    background-color: white;
+    box-shadow: 0 0 3px #00000060;
+    padding: 1rem;
+}
+
+.digest__navbar__user-menu h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+
+.digest__navbar__user-menu button {
+    font-size: 1rem;
+    font-weight: 800;
+    background: none;
+    border: none;
+    color: #9f0000;
+    cursor: pointer;
+    transition: 150ms ease-in-out;
+}
+
+.digest__navbar__user-menu button:hover {
+    background-color: #80808020;
+}

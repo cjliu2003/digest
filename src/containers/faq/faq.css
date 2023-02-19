@@ -1,0 +1,27 @@
+.digest__faq__header {
+    font-size: 2rem;
+    font-weight: 800;
+    color: black;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.digest__faq__questions-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 3rem;
+}
+
+.digest__faq__question h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+
+.digest__faq__question p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #888888;
+}

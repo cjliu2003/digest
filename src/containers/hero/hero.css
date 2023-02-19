@@ -1,0 +1,30 @@
+.digest__hero {
+    align-items: center;
+}
+
+.digest__hero__header {
+    font-size: 3.0rem;
+    font-weight: 1200;
+    color: #000000;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+
+.digest__hero__subheader {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #818181;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.digest__hero__image {
+    width: 750px;
+    height: auto;
+}
+
+.digest__hero__name {
+    font-size: rem;
+    font-weight: 1000;
+}

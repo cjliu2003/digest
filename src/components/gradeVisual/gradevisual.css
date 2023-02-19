@@ -1,0 +1,37 @@
+.grade-visual {
+    padding: 1rem;
+    margin-top: 2rem;
+}
+  
+.grade-header {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 0;
+    color: #000;
+}
+  
+.grade-bar {
+    width: 550px;
+    height: 1.5rem;
+    margin: 1rem 0;
+    background-color: #eee;
+    position: relative;
+    border-radius: 10px;
+}
+  
+.grade-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+}
+  
+.grade-message {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+}
+  

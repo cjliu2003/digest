@@ -1,0 +1,112 @@
+
+.digest__pref__button-active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.digest__create__success {
+    margin-bottom: 1rem;
+}
+
+.digest__create__pref__selection-container input {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    width: 100%;
+}
+
+.digest__create__filetype-msg {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    color: #aaa;
+}
+
+.digest__create__upload-link input {
+    width: 100%;
+    padding: 0.5rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 2rem 0;
+}
+.digest__create__or {
+    font-size: 1.25rem;
+    color: #222222;
+    font-weight: 300;
+    margin: 1rem 0;
+}
+
+.digest__create__choose__header {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #000000;
+}
+.digest__create__header h1 {
+    font-weight: 200;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: black;
+}
+
+.digest__create__choose-file-btn {
+    padding: 0.5rem 2rem;
+    color: white;
+    background: black;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.digest__create__pref__selection-container h2 {
+    margin: 2rem 0;
+}
+
+.digest__create__dotted-container {
+    border: 1px dashed #cccccc;
+    padding: 1rem 3rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+}
+
+.digest__create__pref__selections-grid {
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    justify-content: center;
+    grid-gap: 0.5rem;
+}
+
+.digest__pref__button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    min-width: 100px;
+}
+
+.digest__create__pref__selection-container {
+    margin: 1rem 0;
+}
+
+.digest__create__pref__selections-grid {
+    margin: 1rem 0;
+}
+
+.digest__create__submit-btn button {
+    padding: 0.5rem 2rem;
+    font-size: 1.25rem;
+    color: white;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+

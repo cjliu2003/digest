@@ -1,0 +1,49 @@
+.digest__footer {
+    justify-content: space-around;
+}
+
+.digest__footer__bg {
+    background: #eee;
+}
+
+.digest__footer__col h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.digest__footer__col p, 
+.digest__footer__col a {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #ffffff;
+    margin: 0.15rem 0;
+}
+
+.digest__copyright p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    color: black;
+    padding-bottom: 3rem;
+}
+
+.digest__footer__person-text {
+    color: black;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.digest__footer__person img {
+    width: 100px;
+    height: auto;
+    border-radius: 50px;
+    margin: 2rem;
+}
+.digest__footer__major {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #999;
+    margin: 0.1rem 0;
+}

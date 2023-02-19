@@ -1,0 +1,134 @@
+.mcq__navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    padding: 0 1rem;
+    background-color: #fff;
+    box-shadow: 0px 2px 8px #00000030;
+    z-index: 2;
+  }
+  .mcq__navbar > * {
+    flex: 1;
+}
+
+.mcq__navbar__link span {
+    margin-left: 1rem;
+}
+
+
+.mcq__navbar__logo img {
+    width: 200px;
+    height: auto;
+}
+.mcq__navbar__set-info {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.mcq__navbar__set-info h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: black;
+}
+
+.mcq__navbar__logo {
+    position: absolute;
+    left: 35px;
+}
+
+.mcq__navbar__link {
+    position: absolute;
+    right: 35px;
+}
+
+
+.mcq__navbar__link span {
+    cursor: pointer;
+}
+
+.mcq__questions-container {
+    margin-top: 90px;
+}
+
+.mcq__submit-container {
+    margin: 4rem 0;
+}
+
+.mcq__submit-container h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 2rem;
+}
+
+.mcq__submit-container__button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+.mcq__confirm-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 300px;
+    background: white;
+    z-index: 4;
+    border-radius: 20px;
+    padding: 2rem;
+}
+  
+.mcq__confirm-popup__button-row {
+    justify-content: center;
+}
+
+.mcq__confirm-popup {
+    justify-content: space-around;
+}
+
+.mcq__confirm-popup h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: black;
+    margin-bottom: 3rem;
+
+}
+.mcq__confirm__review-btn, 
+.mcq__confirm__submit-btn {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    transition: 100ms ease-in-out;
+}
+
+.mcq__confirm__review-btn:hover,
+.mcq__confirm__submit-btn:hover {
+    transform: scale(1.025);
+}
+
+.mcq__confirm__review-btn {
+    background: white;
+    border: 1px solid #eee;
+}
+
+.mcq__confirm__submit-btn {
+    background: var(--primary-color);
+    color: white;
+}

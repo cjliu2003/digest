@@ -1,0 +1,204 @@
+.flashcards {
+    height: 100vh
+}
+.flashcards__navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    padding: 0 1rem;
+    background-color: #fff;
+    box-shadow: 0px 2px 8px #00000030;
+    z-index: 2;
+  }
+
+  .flashcards__navbar > * {
+    flex: 1;
+}
+
+.flashcards__navbar__link span {
+    margin-left: 2rem;
+}
+
+.flashcards__navbar__link h3 {
+    transition: 150ms ease-in-out;
+    margin-right: 2rem;
+}
+
+.flashcards__navbar__link h3:hover {
+    transform: scale(1.05);
+    color: var(--primary-color)
+}
+
+
+.flashcards__navbar__logo img {
+    width: 200px;
+    height: auto;
+}
+
+.flashcards__card__shuffle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 100ms ease-in-out;
+}
+
+.flashcards__card__shuffle-btn:hover {
+    transform: scale(1.05);
+}
+.flashcards__shuffle-btn__column {
+    margin-right: 1rem;
+}
+
+.flashcards__shuffle-btn__column p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #222;
+}
+  
+.flashcards__settings-menu {
+    position: absolute;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 650px;
+    height: 550px;
+    background: white;
+    z-index: 4;
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.flashcards__card__content button {
+    align-self: flex-end;
+    background: none;
+    border: none;
+}
+.flashcards__navbar__set-info {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.flashcards__settings-menu hr {
+    margin: 2rem 0;
+}
+
+.flashcards__settings {
+    align-self: flex-end;
+}
+
+.flashcards__settings button {
+    background: none;
+    border: none;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.flashcards__navbar__logo {
+    position: absolute;
+    left: 35px;
+}
+
+.flashcards__navbar__link {
+    position: absolute;
+    right: 35px;
+}
+
+
+.flashcards__card__content {
+    margin: 2rem 0;
+    background-color: white;
+    box-shadow: 0 0 5px #00000060;
+    padding: 5rem;
+    width: 850px;
+    height: 500px;
+    cursor: pointer;
+
+    transition: transform 500ms ease-in-out;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+}
+
+.flashcards__card__content.flipped {
+  transform: rotatey(360deg);
+}
+
+.flashcards__card__next-btn, .flashcards__card__prev-btn {
+    padding: 0.5rem 2rem;
+    margin: 0.5rem;
+    background: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    border-radius: 2.5px;
+    transition: 100ms ease-in-out;
+}
+ 
+.flashcards__card__next-btn:hover, .flashcards__card__prev-btn:hover {
+    transform: scale(1.05);
+}
+
+.flashcards__settings-menu__row__header {
+    justify-content: space-between;
+}
+
+.flashcards__settings-menu__row__header span, .flashcards__navbar__link span {
+    cursor: pointer;
+}
+
+.flashcards__navbar__set-info h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: black;
+}
+
+.flashcards__settings-menu__save {
+    align-self: center;
+}
+
+.flashcards__settings-menu__save button {
+    padding: 0.5rem 1.5rem;
+    color: white;
+    border-radius: 2.5px;
+    background: black;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+.flashcards__settings-menu__toggle {
+    width: fit-content;
+    margin: 1rem 0;
+}
+.flashcards__settings-menu__header {
+    font-weight: 800;
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 1rem;
+}
+
+.flashcards__settings-menu__row h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: black;
+}
+.flashcards__settings-menu__toggle-btn {
+    padding: 0.5rem 0.75rem;
+    font-weight: 800;
+    font-size: 1.25rem;
+    border: none;
+    cursor: pointer;
+}
+
+
+.flashcards__settings-menu__toggle-btn-active {
+    background: var(--primary-color);
+    color: white;
+}
