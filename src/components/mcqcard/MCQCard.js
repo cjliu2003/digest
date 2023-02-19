@@ -15,10 +15,10 @@ const MCQCard = ({question, A, B, C, D, setAnswer, idx, total, answers}) => {
       </div>
       <div className="mcq__card__choices">
         <div className="mcq__card__choices__container">
-          <div onClick={() => handleChoiceClick("A")} className={answers[idx] === "A" ? "mcq__card__choices__container__choice mcq__card__choices__container__choice-active" : "mcq__card__choices__container__choice"}>{A}</div>
-          <div onClick={() => handleChoiceClick("B")} className={answers[idx] === "B" ? "mcq__card__choices__container__choice mcq__card__choices__container__choice-active" : "mcq__card__choices__container__choice"}>{B}</div>
-          <div onClick={() => handleChoiceClick("C")} className={answers[idx] === "C" ? "mcq__card__choices__container__choice mcq__card__choices__container__choice-active" : "mcq__card__choices__container__choice"}>{C}</div>
-          <div onClick={() => handleChoiceClick("D")} className={answers[idx] === "D" ? "mcq__card__choices__container__choice mcq__card__choices__container__choice-active" : "mcq__card__choices__container__choice"}>{D}</div>
+          <div onClick={() => handleChoiceClick("A")} className={answers[idx] === "A" ? "mcq__card__choices__container__choice mcq__card__choices__container__choice-active" : "mcq__card__choices__container__choice"}>{"A: " + A}</div>
+          <div onClick={() => handleChoiceClick("B")} className={answers[idx] === "B" ? "mcq__card__choices__container__choice mcq__card__choices__container__choice-active" : "mcq__card__choices__container__choice"}>{"B: " + B}</div>
+          <div onClick={() => handleChoiceClick("C")} className={answers[idx] === "C" ? "mcq__card__choices__container__choice mcq__card__choices__container__choice-active" : "mcq__card__choices__container__choice"}>{"C: " + C}</div>
+          <div onClick={() => handleChoiceClick("D")} className={answers[idx] === "D" ? "mcq__card__choices__container__choice mcq__card__choices__container__choice-active" : "mcq__card__choices__container__choice"}>{"D: " + D}</div>
         </div>
       </div>
     </div>

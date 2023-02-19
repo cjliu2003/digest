@@ -44,7 +44,7 @@ const GradedMCQCard = ({question, A, B, C, D, correct, idx, total, answers}) => 
                 : answers[idx] === choice && !isCorrect(answers[idx]) 
                 ? "gmcq__card__choices__container__choice gmcq__card__choices__container__choice-incorrect" 
                 : "gmcq__card__choices__container__choice"
-                }>{convertToVar(choice)}
+                }>{choice + ": " + convertToVar(choice)}
             </div>
                 )
             })}

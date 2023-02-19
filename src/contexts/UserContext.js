@@ -87,7 +87,6 @@ export const UserContextProvider = ({ children }) => {
             // add new set to current sets
             const newSets = doc.data().sets;
             newSets.push(set);
-            console.log(newSets)
             // update sets
             setDoc(userDocRef, {
                 sets: newSets,

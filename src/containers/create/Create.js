@@ -14,7 +14,7 @@ const Create = () => {
         }, 
         "summary": {
             type: "paragraphs",
-            length_options: [1, 2, 3, 4]
+            length_options: [1, 2, 3]
         },
         "true/false quiz": {
             type: "questions",
@@ -22,7 +22,7 @@ const Create = () => {
         },
         "multiple choice quiz": {
             type: "questions",
-            length_options: [5, 10, 15]
+            length_options: [3, 5, 8]
         },
         "bullet points": {
             type: "bullet points",
@@ -37,8 +37,7 @@ const Create = () => {
     const [fileUploaded, setFileUploaded] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [link, setLink] = useState("");
-    const {uploadFile, addSet, setFeaturedSet} = useUserContext()
+    const { addSet, setFeaturedSet} = useUserContext()
 
     const onDrop = (acceptedFiles) => {
         const file = acceptedFiles[0]
@@ -100,8 +99,8 @@ const Create = () => {
         return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
     const handleSubmit = async() => {
-        if (!selectedFile && link === "") {
-            alert("Please upload a file or enter a link")
+        if (!selectedFile) {
+            alert("Please upload a file")
         } else if (currLength === "") {
             alert("Please select a length");
         } else {
@@ -117,9 +116,13 @@ const Create = () => {
                 method: "POST",
                 body: formData,
             })
-            console.log(response)
+            // if there are any errors, setLoading to false and alert the user
+            if (!response.ok) {
+                setLoading(false)
+                alert("There was an error processing your file. Please try again later.")
+                return;
+            }
             const responseData = await response.json();
-            console.log(responseData);
             // note that the set object will not have all of these fields, this is just for testing. 
             const set = {
                 id: generateUniqueId(),
@@ -226,11 +229,8 @@ const Create = () => {
                 <h2 className="digest__create__or">Or click to select a file</h2>
             
                 </>}</>}
-                <p className="digest__create__filetype-msg">Accepted filetypes: mp4, wav, pdf, or url (see below)</p>
+                <p className="digest__create__filetype-msg">Accepted filetypes: mp4, wav, or pdf (see below)</p>
             </div>
-            {!fileUploaded && <div className="digest__create__upload-link">
-                <input onChange={e => setLink(e.target.value)} placeholder='Or enter a link!'></input>
-            </div>}
         </div>
         <div className="digest__create__pref-container">
             <div className="digest__create__pref__header">
